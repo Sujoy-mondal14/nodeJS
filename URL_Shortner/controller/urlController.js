@@ -12,7 +12,7 @@ const handelNewShortUrl = async (req,res) => {
         visitHistory: []
     })    
 
-    return res.json({id: UrlId})
+    return res.render('home',{id: UrlId})
 }
 
 async function handelAnalytics (req,res){
