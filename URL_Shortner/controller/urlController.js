@@ -9,7 +9,8 @@ const handelNewShortUrl = async (req,res) => {
     await URL.create({
         shortId: UrlId,
         redirectedUrl: body.url,
-        visitHistory: []
+        visitHistory: [],
+        createdBy: req.user._id
     })    
 
     return res.render('home',{id: UrlId})

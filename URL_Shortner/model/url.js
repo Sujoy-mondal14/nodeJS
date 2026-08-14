@@ -15,7 +15,11 @@ const urlSchema = new mongo.Schema({
         timeStamp : {
             type: Number
         }
-    }]
+    }],
+    createdBy: {
+        type: mongo.Schema.Types.ObjectId,
+        ref:'users'
+    }
 }, {
     timestamps: true
 })
