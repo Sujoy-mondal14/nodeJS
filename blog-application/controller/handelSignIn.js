@@ -4,9 +4,15 @@ const USER = require("../model/userSchema.js")
 async function handelSignIn(req,res) {
     const {email,password} = req.body
 
-    const user = USER.matchPassword(email, password)
-    console.log(user);
-    return res.redirect('/')
+    try {
+        const token = await USER.matchPasswordAndGenerateToken(email, password)
+        console.log(token);
+        return res.cookie('token', token).redirect('/')
+    } catch (error) {
+        return res.render('signin', {
+            error: "Invalid Password or Email !"
+        })
+    }
     
 }
 

@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const {handelSignUp} = require('../controller/handelSignUp.js')
 const {handelSignIn} = require('../controller/handelSignIn.js')
+const {handelLogout} = require('../controller/handelLogout.js')
 
 const router = Router()
 
@@ -10,6 +11,7 @@ router.get('/sign-up', (req,res) => {
 router.get('/sign-in', (req,res) => {
     return res.render('signin')
 })
+router.get('/log-out', handelLogout)
 
 router.post('/sign-up', handelSignUp)
 router.post('/sign-in', handelSignIn)
