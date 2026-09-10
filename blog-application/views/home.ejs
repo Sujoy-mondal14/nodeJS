@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('./partials/head.ejs') %>
-    <title>Home-Page</title>
+        <title>Home-Page</title>
 </head>
+
 <body>
     <%- include('./partials/nav.ejs') %>
-    <%= JSON.stringify(user) %>
-    <%- include('./partials/script.ejs') %>
+        <div class="container">
+            <% blogs.forEach(blog=> { %>
+                <div class="card" style="width: 18rem;">
+                    <img src="<%= blog.coverImage %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= blog.title %></h5>
+                        <p class="card-text"><%= blog.body %></p>
+                        <a href="/blogs/<%= blog._id %>" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+        <%- include('./partials/script.ejs') %>
 </body>
+
 </html>

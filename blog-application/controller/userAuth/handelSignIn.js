@@ -1,4 +1,4 @@
-const USER = require("../model/userSchema.js")
+const USER = require("../../model/userSchema.js")
 
 
 async function handelSignIn(req,res) {

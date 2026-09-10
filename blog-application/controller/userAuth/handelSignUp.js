@@ -1,4 +1,4 @@
-const USER = require('../model/userSchema.js')
+const USER = require('../../model/userSchema.js')
 
 async function handelSignUp(req,res){
     const {fullName, email, password} = req.body

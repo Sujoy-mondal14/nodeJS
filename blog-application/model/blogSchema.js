@@ -16,6 +16,8 @@ const blogSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'user'
     }
+},{
+    timestamps: true
 })
 
 const BLOG = model('userBlog', blogSchema)
