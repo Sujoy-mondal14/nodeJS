@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const upload = require('../controller/fileUpload.js')
-const {handelAddBlogs} = require('../controller/addBlogs/handelAddBlogs.js')
+const {handelAddBlogs} = require('../controller/blogs/handelAddBlogs.js')
 const { checkForAuthenticationCookie } = require('../middlewares/authentication.js')
 
 const route = Router()
@@ -10,6 +10,7 @@ route.get('/add-blogs', (req,res) => {
         user: req.user
     })
 })
+route.get('/:id', handelBlogView)
 
 route.post('/', checkForAuthenticationCookie('token'), (req, res, next) => {
     console.log('req.user before multer:', req.user);

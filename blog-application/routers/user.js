@@ -1,7 +1,7 @@
 const {Router} = require('express')
-const {handelLogout} = require('../controller/userAuth/handelLogout.js')
-const {handelSignIn} = require('../controller/userAuth/handelSignIn.js')
-const {handelSignUp} = require('../controller/userAuth/handelSignUp.js')
+const {handelLogout} = require('../controller/user/handelLogout.js')
+const {handelSignIn} = require('../controller/user/handelSignIn.js')
+const {handelSignUp} = require('../controller/user/handelSignUp.js')
 
 const router = Router()
 
