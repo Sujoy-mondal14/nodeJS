@@ -2,6 +2,7 @@ const {Router} = require('express')
 const upload = require('../controller/fileUpload.js')
 const {handelAddBlogs} = require('../controller/blogs/handelAddBlogs.js')
 const { checkForAuthenticationCookie } = require('../middlewares/authentication.js')
+const {handelBlogView} = require('../controller/blogs/handelBlogView.js')
 
 const route = Router()
 
@@ -12,13 +13,6 @@ route.get('/add-blogs', (req,res) => {
 })
 route.get('/:id', handelBlogView)
 
-route.post('/', checkForAuthenticationCookie('token'), (req, res, next) => {
-    console.log('req.user before multer:', req.user);
-    next();
-}, upload.single('coverImage'), (req, res, next) => {
-    console.log('req.file after multer:', req.file);
-    console.log('req.body after multer:', req.body);
-    next();
-}, handelAddBlogs);
+route.post('/', checkForAuthenticationCookie('token'), upload.single('coverImage'),handelAddBlogs);
 
 module.exports = route
