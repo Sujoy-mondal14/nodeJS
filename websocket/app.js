@@ -1,8 +1,12 @@
-const app = require('./server.js')
+const express = require('express')
 const path = require('node:path')
 
-app.use(app.static(path.resolve('./public')))
+const app = express()
+app.use(express.static(path.resolve('./public')))
 
 app.get('/', (req, res)=>{
     return res.sendFile('/public/index.html')
 })
+
+
+module.exports = app;
