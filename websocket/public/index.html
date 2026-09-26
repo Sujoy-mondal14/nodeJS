@@ -7,5 +7,28 @@
 </head>
 <body>
     <h1>Hello World !</h1>
+    <input type="text" name="usermessahe" id="message" placeholder="Enter ur message">
+    <button id="sendBtn">Send</button>
+    <div id="allMessages"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io()
+        const message = document.getElementById('message')
+        const sendBtn = document.getElementById('sendBtn')
+        const allMessages = document.getElementById('allMessages')
+        
+        socket.on('message', message => {
+            const p = document.createElement('p');
+            p.innerText = message
+            allMessages.append(p)
+        })
+
+        sendBtn.addEventListener('click', (e) => {
+            const usermessage = message.value
+            console.log(usermessage)
+            socket.emit('user-message', usermessage)
+        })
+        
+    </script>
 </body>
 </html>
